@@ -4,9 +4,9 @@ Component: Arm Compiler for Embedded 6.21 Tool: armlink [5ec1fa00]
 
 Section Cross References
 
-    main.o(.text.EXTI0_IRQHandler) refers to my_gpio.o(.text.GPIO_ClearInterruptFlag) for GPIO_ClearInterruptFlag
-    main.o(.ARM.exidx.text.EXTI0_IRQHandler) refers to main.o(.text.EXTI0_IRQHandler) for [Anonymous Symbol]
-    main.o(.text.main) refers to my_rcc.o(.text.SystemClock_Config_72MHz) for SystemClock_Config_72MHz
+    main.o(.text.EXTI9_5_IRQHandler) refers to my_gpio.o(.text.GPIO_ClearInterruptFlag) for GPIO_ClearInterruptFlag
+    main.o(.text.EXTI9_5_IRQHandler) refers to my_gpio.o(.text.GPIO_TogglePin) for GPIO_TogglePin
+    main.o(.ARM.exidx.text.EXTI9_5_IRQHandler) refers to main.o(.text.EXTI9_5_IRQHandler) for [Anonymous Symbol]
     main.o(.text.main) refers to my_gpio.o(.text.GPIO_EnableClock) for GPIO_EnableClock
     main.o(.text.main) refers to my_gpio.o(.text.GPIO_InitPin) for GPIO_InitPin
     main.o(.text.main) refers to my_gpio.o(.text.GPIO_WritePin) for GPIO_WritePin
@@ -33,7 +33,7 @@ Section Cross References
     startup_stm32f10x_md.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f10x_md.o(RESET) refers to startup_stm32f10x_md.o(STACK) for __initial_sp
     startup_stm32f10x_md.o(RESET) refers to startup_stm32f10x_md.o(.text) for Reset_Handler
-    startup_stm32f10x_md.o(RESET) refers to main.o(.text.EXTI0_IRQHandler) for EXTI0_IRQHandler
+    startup_stm32f10x_md.o(RESET) refers to main.o(.text.EXTI9_5_IRQHandler) for EXTI9_5_IRQHandler
     startup_stm32f10x_md.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f10x_md.o(.text) refers to __main.o(!!!main) for __main
     startup_stm32f10x_md.o(.text) refers to startup_stm32f10x_md.o(HEAP) for Heap_Mem
@@ -158,7 +158,7 @@ Section Cross References
 Removing Unused input sections from the image.
 
     Removing main.o(.text), (0 bytes).
-    Removing main.o(.ARM.exidx.text.EXTI0_IRQHandler), (8 bytes).
+    Removing main.o(.ARM.exidx.text.EXTI9_5_IRQHandler), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
     Removing main.o(.text.delay), (22 bytes).
     Removing main.o(.ARM.exidx.text.delay), (8 bytes).
@@ -167,7 +167,6 @@ Removing Unused input sections from the image.
     Removing my_gpio.o(.ARM.exidx.text.GPIO_EnableClock), (8 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_InitPin), (8 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_WritePin), (8 bytes).
-    Removing my_gpio.o(.text.GPIO_TogglePin), (30 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_TogglePin), (8 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_ConfigInterrupt), (8 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_GetPortSource), (8 bytes).
@@ -176,6 +175,7 @@ Removing Unused input sections from the image.
     Removing my_gpio.o(.ARM.exidx.text.__NVIC_EnableIRQ), (8 bytes).
     Removing my_gpio.o(.ARM.exidx.text.GPIO_ClearInterruptFlag), (8 bytes).
     Removing my_rcc.o(.text), (0 bytes).
+    Removing my_rcc.o(.text.SystemClock_Config_72MHz), (304 bytes).
     Removing my_rcc.o(.ARM.exidx.text.SystemClock_Config_72MHz), (8 bytes).
     Removing system_stm32f10x.o(.text), (0 bytes).
     Removing system_stm32f10x.o(.text.SystemInit), (102 bytes).
@@ -189,7 +189,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.data.SystemCoreClock), (4 bytes).
     Removing system_stm32f10x.o(.rodata.AHBPrescTable), (16 bytes).
 
-31 unused section(s) (total 910 bytes) removed from the image.
+31 unused section(s) (total 1184 bytes) removed from the image.
 
 ==============================================================================
 
@@ -311,21 +311,21 @@ Image Symbol Table
     .text                                    0x0800023c   Section        0  sys_exit.o(.text)
     .text                                    0x08000248   Section        2  use_no_semi.o(.text)
     .text                                    0x0800024a   Section        0  indicate_semi.o(.text)
-    [Anonymous Symbol]                       0x0800024c   Section        0  main.o(.text.EXTI0_IRQHandler)
-    [Anonymous Symbol]                       0x08000258   Section        0  my_gpio.o(.text.GPIO_ClearInterruptFlag)
-    [Anonymous Symbol]                       0x08000294   Section        0  my_gpio.o(.text.GPIO_ConfigInterrupt)
-    [Anonymous Symbol]                       0x0800039c   Section        0  my_gpio.o(.text.GPIO_EnableClock)
-    [Anonymous Symbol]                       0x08000458   Section        0  my_gpio.o(.text.GPIO_EnableInterrupt)
-    GPIO_GetPortSource                       0x080004c5   Thumb Code   140  my_gpio.o(.text.GPIO_GetPortSource)
-    [Anonymous Symbol]                       0x080004c4   Section        0  my_gpio.o(.text.GPIO_GetPortSource)
-    [Anonymous Symbol]                       0x08000550   Section        0  my_gpio.o(.text.GPIO_InitPin)
-    [Anonymous Symbol]                       0x080005d4   Section        0  my_gpio.o(.text.GPIO_WritePin)
-    [Anonymous Symbol]                       0x0800060c   Section        0  my_rcc.o(.text.SystemClock_Config_72MHz)
-    __NVIC_EnableIRQ                         0x0800073d   Thumb Code    48  my_gpio.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x0800073c   Section        0  my_gpio.o(.text.__NVIC_EnableIRQ)
-    __NVIC_SetPriority                       0x0800076d   Thumb Code    66  my_gpio.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x0800076c   Section        0  my_gpio.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x080007b0   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x0800024c   Section        0  main.o(.text.EXTI9_5_IRQHandler)
+    [Anonymous Symbol]                       0x08000264   Section        0  my_gpio.o(.text.GPIO_ClearInterruptFlag)
+    [Anonymous Symbol]                       0x080002a0   Section        0  my_gpio.o(.text.GPIO_ConfigInterrupt)
+    [Anonymous Symbol]                       0x080003a8   Section        0  my_gpio.o(.text.GPIO_EnableClock)
+    [Anonymous Symbol]                       0x08000464   Section        0  my_gpio.o(.text.GPIO_EnableInterrupt)
+    GPIO_GetPortSource                       0x080004d1   Thumb Code   140  my_gpio.o(.text.GPIO_GetPortSource)
+    [Anonymous Symbol]                       0x080004d0   Section        0  my_gpio.o(.text.GPIO_GetPortSource)
+    [Anonymous Symbol]                       0x0800055c   Section        0  my_gpio.o(.text.GPIO_InitPin)
+    [Anonymous Symbol]                       0x080005e0   Section        0  my_gpio.o(.text.GPIO_TogglePin)
+    [Anonymous Symbol]                       0x08000600   Section        0  my_gpio.o(.text.GPIO_WritePin)
+    __NVIC_EnableIRQ                         0x08000639   Thumb Code    48  my_gpio.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x08000638   Section        0  my_gpio.o(.text.__NVIC_EnableIRQ)
+    __NVIC_SetPriority                       0x08000669   Thumb Code    66  my_gpio.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x08000668   Section        0  my_gpio.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x080006ac   Section        0  main.o(.text.main)
     .bss                                     0x20000000   Section       96  libspace.o(.bss)
     Heap_Mem                                 0x20000060   Data         512  startup_stm32f10x_md.o(HEAP)
     HEAP                                     0x20000060   Section      512  startup_stm32f10x_md.o(HEAP)
@@ -440,12 +440,12 @@ Image Symbol Table
     DMA1_Channel5_IRQHandler                 0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     DMA1_Channel6_IRQHandler                 0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     DMA1_Channel7_IRQHandler                 0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
+    EXTI0_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     EXTI15_10_IRQHandler                     0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     EXTI1_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     EXTI2_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     EXTI3_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     EXTI4_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
-    EXTI9_5_IRQHandler                       0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     FLASH_IRQHandler                         0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     I2C1_ER_IRQHandler                       0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
     I2C1_EV_IRQHandler                       0x080001af   Thumb Code     0  startup_stm32f10x_md.o(.text)
@@ -485,17 +485,17 @@ Image Symbol Table
     __I$use$semihosting                      0x08000249   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x08000249   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x0800024b   Thumb Code     0  indicate_semi.o(.text)
-    EXTI0_IRQHandler                         0x0800024d   Thumb Code    10  main.o(.text.EXTI0_IRQHandler)
-    GPIO_ClearInterruptFlag                  0x08000259   Thumb Code    58  my_gpio.o(.text.GPIO_ClearInterruptFlag)
-    GPIO_ConfigInterrupt                     0x08000295   Thumb Code   262  my_gpio.o(.text.GPIO_ConfigInterrupt)
-    GPIO_EnableClock                         0x0800039d   Thumb Code   186  my_gpio.o(.text.GPIO_EnableClock)
-    GPIO_EnableInterrupt                     0x08000459   Thumb Code   106  my_gpio.o(.text.GPIO_EnableInterrupt)
-    GPIO_InitPin                             0x08000551   Thumb Code   132  my_gpio.o(.text.GPIO_InitPin)
-    GPIO_WritePin                            0x080005d5   Thumb Code    56  my_gpio.o(.text.GPIO_WritePin)
-    SystemClock_Config_72MHz                 0x0800060d   Thumb Code   304  my_rcc.o(.text.SystemClock_Config_72MHz)
-    main                                     0x080007b1   Thumb Code   112  main.o(.text.main)
-    Region$$Table$$Base                      0x08000820   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000830   Number         0  anon$$obj.o(Region$$Table)
+    EXTI9_5_IRQHandler                       0x0800024d   Thumb Code    24  main.o(.text.EXTI9_5_IRQHandler)
+    GPIO_ClearInterruptFlag                  0x08000265   Thumb Code    58  my_gpio.o(.text.GPIO_ClearInterruptFlag)
+    GPIO_ConfigInterrupt                     0x080002a1   Thumb Code   262  my_gpio.o(.text.GPIO_ConfigInterrupt)
+    GPIO_EnableClock                         0x080003a9   Thumb Code   186  my_gpio.o(.text.GPIO_EnableClock)
+    GPIO_EnableInterrupt                     0x08000465   Thumb Code   106  my_gpio.o(.text.GPIO_EnableInterrupt)
+    GPIO_InitPin                             0x0800055d   Thumb Code   132  my_gpio.o(.text.GPIO_InitPin)
+    GPIO_TogglePin                           0x080005e1   Thumb Code    30  my_gpio.o(.text.GPIO_TogglePin)
+    GPIO_WritePin                            0x08000601   Thumb Code    56  my_gpio.o(.text.GPIO_WritePin)
+    main                                     0x080006ad   Thumb Code    96  main.o(.text.main)
+    Region$$Table$$Base                      0x0800070c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800071c   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x20000000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000060   Data           0  libspace.o(.bss)
 
@@ -507,9 +507,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000830, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000071c, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000830, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000071c, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -572,28 +572,28 @@ Memory Map of the image
     0x08000248   0x08000248   0x00000002   Code   RO          186    .text               c_w.l(use_no_semi.o)
     0x0800024a   0x0800024a   0x00000000   Code   RO          188    .text               c_w.l(indicate_semi.o)
     0x0800024a   0x0800024a   0x00000002   PAD
-    0x0800024c   0x0800024c   0x0000000a   Code   RO            2    .text.EXTI0_IRQHandler  main.o
-    0x08000256   0x08000256   0x00000002   PAD
-    0x08000258   0x08000258   0x0000003a   Code   RO           34    .text.GPIO_ClearInterruptFlag  my_gpio.o
-    0x08000292   0x08000292   0x00000002   PAD
-    0x08000294   0x08000294   0x00000106   Code   RO           24    .text.GPIO_ConfigInterrupt  my_gpio.o
-    0x0800039a   0x0800039a   0x00000002   PAD
-    0x0800039c   0x0800039c   0x000000ba   Code   RO           16    .text.GPIO_EnableClock  my_gpio.o
-    0x08000456   0x08000456   0x00000002   PAD
-    0x08000458   0x08000458   0x0000006a   Code   RO           28    .text.GPIO_EnableInterrupt  my_gpio.o
-    0x080004c2   0x080004c2   0x00000002   PAD
-    0x080004c4   0x080004c4   0x0000008c   Code   RO           26    .text.GPIO_GetPortSource  my_gpio.o
-    0x08000550   0x08000550   0x00000084   Code   RO           18    .text.GPIO_InitPin  my_gpio.o
-    0x080005d4   0x080005d4   0x00000038   Code   RO           20    .text.GPIO_WritePin  my_gpio.o
-    0x0800060c   0x0800060c   0x00000130   Code   RO           43    .text.SystemClock_Config_72MHz  my_rcc.o
-    0x0800073c   0x0800073c   0x00000030   Code   RO           32    .text.__NVIC_EnableIRQ  my_gpio.o
-    0x0800076c   0x0800076c   0x00000042   Code   RO           30    .text.__NVIC_SetPriority  my_gpio.o
-    0x080007ae   0x080007ae   0x00000002   PAD
-    0x080007b0   0x080007b0   0x00000070   Code   RO            4    .text.main          main.o
-    0x08000820   0x08000820   0x00000010   Data   RO          244    Region$$Table       anon$$obj.o
+    0x0800024c   0x0800024c   0x00000018   Code   RO            2    .text.EXTI9_5_IRQHandler  main.o
+    0x08000264   0x08000264   0x0000003a   Code   RO           34    .text.GPIO_ClearInterruptFlag  my_gpio.o
+    0x0800029e   0x0800029e   0x00000002   PAD
+    0x080002a0   0x080002a0   0x00000106   Code   RO           24    .text.GPIO_ConfigInterrupt  my_gpio.o
+    0x080003a6   0x080003a6   0x00000002   PAD
+    0x080003a8   0x080003a8   0x000000ba   Code   RO           16    .text.GPIO_EnableClock  my_gpio.o
+    0x08000462   0x08000462   0x00000002   PAD
+    0x08000464   0x08000464   0x0000006a   Code   RO           28    .text.GPIO_EnableInterrupt  my_gpio.o
+    0x080004ce   0x080004ce   0x00000002   PAD
+    0x080004d0   0x080004d0   0x0000008c   Code   RO           26    .text.GPIO_GetPortSource  my_gpio.o
+    0x0800055c   0x0800055c   0x00000084   Code   RO           18    .text.GPIO_InitPin  my_gpio.o
+    0x080005e0   0x080005e0   0x0000001e   Code   RO           22    .text.GPIO_TogglePin  my_gpio.o
+    0x080005fe   0x080005fe   0x00000002   PAD
+    0x08000600   0x08000600   0x00000038   Code   RO           20    .text.GPIO_WritePin  my_gpio.o
+    0x08000638   0x08000638   0x00000030   Code   RO           32    .text.__NVIC_EnableIRQ  my_gpio.o
+    0x08000668   0x08000668   0x00000042   Code   RO           30    .text.__NVIC_SetPriority  my_gpio.o
+    0x080006aa   0x080006aa   0x00000002   PAD
+    0x080006ac   0x080006ac   0x00000060   Code   RO            4    .text.main          main.o
+    0x0800070c   0x0800070c   0x00000010   Data   RO          244    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08000830, Size: 0x00000660, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800071c, Size: 0x00000660, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -609,13 +609,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       122          0          0          0          0       1388   main.o
-      1054          0          0          0          0       5801   my_gpio.o
-       304          0          0          0          0       1201   my_rcc.o
+       120          0          0          0          0       1390   main.o
+      1084          0          0          0          0       5801   my_gpio.o
         56         22        236          0       1536        840   startup_stm32f10x_md.o
 
     ----------------------------------------------------------------------
-      1548         22        252          0       1536       9230   Object Totals
+      1272         22        252          0       1536       8031   Object Totals
          0          0         16          0          0          0   (incl. Generated)
         12          0          0          0          0          0   (incl. Padding)
 
@@ -663,15 +662,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1844         38        252          0       1632       9666   Grand Totals
-      1844         38        252          0       1632       9666   ELF Image Totals
-      1844         38        252          0          0          0   ROM Totals
+      1568         38        252          0       1632       8487   Grand Totals
+      1568         38        252          0       1632       8487   ELF Image Totals
+      1568         38        252          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2096 (   2.05kB)
+    Total RO  Size (Code + RO Data)                 1820 (   1.78kB)
     Total RW  Size (RW Data + ZI Data)              1632 (   1.59kB)
-    Total ROM Size (Code + RO Data + RW Data)       2096 (   2.05kB)
+    Total ROM Size (Code + RO Data + RW Data)       1820 (   1.78kB)
 
 ==============================================================================
 

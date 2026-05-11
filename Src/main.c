@@ -5,9 +5,11 @@
 
 void delay(volatile uint32_t);
 
-void EXTI0_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
-	GPIO_ClearInterruptFlag(2) ;
+	GPIO_ClearInterruptFlag(5) ;
+	
+	GPIO_TogglePin(GPIOC, 13);
 
 }
 
@@ -16,13 +18,12 @@ void EXTI0_IRQHandler(void)
 int main(void) {
 		
 	// Set the maximum clk for peripherals
-	SystemClock_Config_72MHz();
+	//SystemClock_Config_72MHz();
 	
 	// Enable the clock for Port C, A
 	GPIO_EnableClock(GPIOC);
 	GPIO_EnableClock(GPIOA);
 	
-	GPIO_InitPin(GPIOC, 13, GPIO_MODE_OUTPUT_PP) ;
 	// Configure PC13 as a Push-Pull Output
 	GPIO_InitPin(GPIOC, 13, GPIO_MODE_OUTPUT_PP);
 	GPIO_WritePin(GPIOC, 13, 1);
