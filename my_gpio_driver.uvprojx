@@ -424,6 +424,16 @@
               <FileType>1</FileType>
               <FilePath>.\Drivers\my_timer.c</FilePath>
             </File>
+            <File>
+              <FileName>my_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\my_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\my_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
