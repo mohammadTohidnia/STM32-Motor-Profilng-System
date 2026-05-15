@@ -12,6 +12,13 @@ void PWM_SetDutyCycle(TIM_TypeDef *TIMx, uint8_t channel, float duty_cycle_perce
 // Start the timer
 void PWM_Start(TIM_TypeDef *TIMx);
 
+// Initialize a specific timer channel for Input Capture
+// We set prescaler to 71 which means that timer works in 1MHz clock (1 tick == 1 microseconds)
+void InputCapture_Init(TIM_TypeDef *TIMx, uint8_t channel);
+
+// Read the captured timestamp value
+uint16_t InputCapture_Read(TIM_TypeDef *TIMx, uint8_t channel);
+
 // Initialize the SysTick timer
 void SysTick_Init(void);
 
