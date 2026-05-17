@@ -4,6 +4,7 @@
 ".\objects\my_rcc.o"
 ".\objects\my_timer.o"
 ".\objects\my_spi.o"
+".\objects\my_adc.o"
 ".\objects\startup_stm32f10x_md.o"
 ".\objects\system_stm32f10x.o"
 --strict --scatter ".\Objects\my_gpio_driver.sct"

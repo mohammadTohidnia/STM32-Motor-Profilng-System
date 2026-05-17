@@ -196,6 +196,9 @@ void InputCapture_Init(TIM_TypeDef *TIMx, uint8_t channel) {
         case 1:
             TIMx->CCMR1 &= ~(3 << 0);  // Clear CC1S bits
             TIMx->CCMR1 |= (1 << 0);   // Set CC1S = 01 (Configure as Input on TI1)
+						// 0x0F (1111) is the maximum filter strength. It samples the pin 8 times
+            // at a divided clock rate to guarantee the pulse is real, not a glitch.
+            TIMx->CCMR1 |= (0x0F << 4);
             TIMx->CCER  &= ~(1 << 1);  // Clear CC1P to trigger on Rising Edge
             TIMx->CCER  |= (1 << 0);   // Set CC1E to Enable Capture
             TIMx->DIER  |= (1 << 1);   // Set CC1IE to Enable Interrupt
@@ -203,6 +206,7 @@ void InputCapture_Init(TIM_TypeDef *TIMx, uint8_t channel) {
         case 2:
             TIMx->CCMR1 &= ~(3 << 8);  
             TIMx->CCMR1 |= (1 << 8);   // CC2S = 01 (Input on TI2)
+						TIMx->CCMR1 |= (0x0F << 12);
             TIMx->CCER  &= ~(1 << 5);  // Rising Edge
             TIMx->CCER  |= (1 << 4);   // Enable Capture
             TIMx->DIER  |= (1 << 2);   // Enable Interrupt
@@ -210,6 +214,7 @@ void InputCapture_Init(TIM_TypeDef *TIMx, uint8_t channel) {
         case 3:
             TIMx->CCMR2 &= ~(3 << 0);  
             TIMx->CCMR2 |= (1 << 0);   // CC3S = 01 (Input on TI3)
+						TIMx->CCMR2 |= (0x0F << 4);
             TIMx->CCER  &= ~(1 << 9);  // Rising Edge
             TIMx->CCER  |= (1 << 8);   // Enable Capture
             TIMx->DIER  |= (1 << 3);   // Enable Interrupt
@@ -217,6 +222,7 @@ void InputCapture_Init(TIM_TypeDef *TIMx, uint8_t channel) {
         case 4:
             TIMx->CCMR2 &= ~(3 << 8);  
             TIMx->CCMR2 |= (1 << 8);   // CC4S = 01 (Input on TI4)
+						TIMx->CCMR2 |= (0x0F << 12);
             TIMx->CCER  &= ~(1 << 13); // Rising Edge
             TIMx->CCER  |= (1 << 12);  // Enable Capture
             TIMx->DIER  |= (1 << 4);   // Enable Interrupt
