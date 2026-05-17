@@ -118,7 +118,7 @@ int main(void) {
     InputCapture_Init(TIM3, 1);
 
     // Start the motor at 50% speed
-    PWM_SetDutyCycle(TIM2, 1, 50.0f);
+    PWM_SetDutyCycle(TIM2, 1, 30.0f);
     PWM_Start(TIM2);
 
     while(1) {
